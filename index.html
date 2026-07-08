@@ -179,14 +179,6 @@
   .success .cursos-list div{font-size:13px;padding:3px 0;color:var(--navy);}
   .success .cursos-list div::before{content:"• ";color:var(--red);}
  
-  .blocked{display:none;text-align:center;padding:30px 20px;}
-  .blocked.show{display:block;}
-  .blocked .icon{
-    width:52px;height:52px;border-radius:50%;
-    background:#FCE9EA;color:var(--red);
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;margin:0 auto 14px;
-  }
   .form.hidden{display:none;}
   .config-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:18px;}
 </style>
@@ -215,7 +207,6 @@
       <label for="rut">RUT</label>
       <input type="text" id="rut" placeholder="12345678-9" required>
       <div class="error" id="errRut">RUT inválido. Verifica el dígito verificador.</div>
-      <div class="error" id="errRutDuplicado">Este RUT ya registró una postulación anteriormente.</div>
  
       <label for="correo">Correo institucional</label>
       <input type="email" id="correo" placeholder="nombre@miuandes.cl" required>
@@ -268,12 +259,6 @@
       <div class="details" id="successDetails"></div>
     </div>
  
-    <div class="blocked" id="blocked">
-      <div class="icon">✕</div>
-      <h2>Ya tienes una postulación registrada</h2>
-      <p>Este RUT ya envió una postulación. Si necesitas modificarla, contacta a la Dirección de Estudios.</p>
-    </div>
- 
   </div>
  
   <div class="config-note">¿Problemas con tu postulación? Escribe a la Dirección de Estudios.</div>
@@ -285,8 +270,6 @@
    de Power Automate antes de publicar.
    ============================================================ */
 const CONFIG = {
-  // Flow HTTP trigger: recibe RUT, devuelve si ya existe una postulación previa
-  GET_POSTULACION_URL: "https://prod-00.westus.logic.azure.com/REEMPLAZAR_GET_POSTULACION",
   // Flow HTTP trigger: recibe el objeto de la postulación (con array de cursos),
   // crea el/los items en SharePoint y dispara el correo de confirmación al alumno
   POST_POSTULACION_URL: "https://defaultb91e1a9b47184623882e6fb655d96b.f0.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f4f9a656f58d44d7adeb26a8c6e2df5f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=wrH7XB8LhtWLvdJt4hhlV-85lxliumn9YVIP-pjnZK4",
@@ -469,7 +452,6 @@ const CURSOS_CARRERA = {
  
 const form = document.getElementById('form');
 const success = document.getElementById('success');
-const blocked = document.getElementById('blocked');
 const rutInput = document.getElementById('rut');
 const correoInput = document.getElementById('correo');
 const cursosBox = document.getElementById('cursosBox');
@@ -504,16 +486,14 @@ function validarRut(rut){
   return dv === dvEsperado;
 }
  
-rutInput.addEventListener('blur', async () => {
+rutInput.addEventListener('blur', () => {
   const raw = rutInput.value.trim();
   if(!raw) return;
   const valido = validarRut(raw);
   document.getElementById('errRut').classList.toggle('show', !valido);
   rutInput.classList.toggle('invalid', !valido);
-  document.getElementById('errRutDuplicado').classList.remove('show');
   if(valido){
     rutInput.value = formatearRut(raw);
-    await verificarRutDuplicado(limpiarRut(raw));
   }
 });
  
@@ -534,27 +514,6 @@ document.querySelectorAll('input[name="condicion"]').forEach(radio => {
     if(!esAlumno) carreraSelect.value = '';
   });
 });
- 
-// -------- Verifica si el RUT ya tiene una postulación registrada --------
-async function verificarRutDuplicado(rutLimpio){
-  try{
-    const res = await fetch(CONFIG.GET_POSTULACION_URL, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ rut: rutLimpio })
-    });
-    const data = await res.json();
-    if(data.existe){
-      form.classList.add('hidden');
-      blocked.classList.add('show');
-    }else{
-      form.classList.remove('hidden');
-      blocked.classList.remove('show');
-    }
-  }catch(e){
-    // si el flow no responde, se deja pasar y la validación final queda del lado del flow de creación
-  }
-}
  
 // -------- Carga de cursos disponibles --------
 async function cargarCursos(){
