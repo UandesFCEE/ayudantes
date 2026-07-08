@@ -83,7 +83,7 @@
   .error{font-size:12px;color:var(--red);margin-top:5px;display:none;}
   .error.show{display:block;}
   input.invalid{border-color:var(--red);}
-
+ 
   /* Selector de cursos */
   .cursos-header{
     display:flex;justify-content:space-between;align-items:baseline;
@@ -115,7 +115,7 @@
   .curso-item .curso-carrera{font-size:11.5px;color:var(--muted);font-weight:400;}
   .curso-item.disabled{opacity:.4;cursor:not-allowed;}
   .curso-search{margin-bottom:8px;}
-
+ 
   /* Condición: Alumno / Titulado */
   .condicion-group{display:flex;gap:8px;}
   .condicion-item{
@@ -141,7 +141,7 @@
   }
   #carreraWrap{display:block;}
   #carreraWrap.hidden{display:none;}
-
+ 
   button{
     width:100%;
     margin-top:22px;
@@ -157,7 +157,7 @@
   }
   button:hover:not(:disabled){background:#A80014;}
   button:disabled{background:#C9CDD2;cursor:not-allowed;}
-
+ 
   .success{display:none;text-align:center;padding:30px 20px;}
   .success.show{display:block;}
   .success .icon{
@@ -178,7 +178,7 @@
   .success .cursos-list{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
   .success .cursos-list div{font-size:13px;padding:3px 0;color:var(--navy);}
   .success .cursos-list div::before{content:"• ";color:var(--red);}
-
+ 
   .blocked{display:none;text-align:center;padding:30px 20px;}
   .blocked.show{display:block;}
   .blocked .icon{
@@ -192,7 +192,7 @@
 </style>
 </head>
 <body>
-
+ 
 <header>
   <img src="data:image/jpeg;base64,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" alt="Facultad de Ciencias Económicas y Empresariales">
   <div class="header-text">
@@ -201,29 +201,29 @@
     <p>Facultad de Ciencias Económicas y Empresariales</p>
   </div>
 </header>
-
+ 
 <div class="wrap">
   <div class="card">
-
+ 
     <form class="form" id="form">
-
+ 
       <div class="hint" style="margin-bottom:14px;">* Todos los campos son obligatorios.</div>
-
+ 
       <label class="first" for="nombre">Nombre completo</label>
       <input type="text" id="nombre" placeholder="Nombre y apellidos" autocomplete="name" required>
-
+ 
       <label for="rut">RUT</label>
       <input type="text" id="rut" placeholder="12345678-9" required>
       <div class="error" id="errRut">RUT inválido. Verifica el dígito verificador.</div>
       <div class="error" id="errRutDuplicado">Este RUT ya registró una postulación anteriormente.</div>
-
+ 
       <label for="correo">Correo institucional</label>
       <input type="email" id="correo" placeholder="nombre@miuandes.cl" required>
       <div class="error" id="errCorreo">Ingresa un correo válido.</div>
-
+ 
       <label for="celular">Celular</label>
       <input type="tel" id="celular" placeholder="+56 9 1234 5678" required>
-
+ 
       <label class="first" style="margin-top:16px;">Condición</label>
       <div class="condicion-group" id="condicionGroup">
         <label class="condicion-item">
@@ -235,7 +235,7 @@
           <span>Titulado</span>
         </label>
       </div>
-
+ 
       <div id="carreraWrap">
         <label for="carrera">Carrera</label>
         <select id="carrera" required>
@@ -245,7 +245,7 @@
           <option>Otros</option>
         </select>
       </div>
-
+ 
       <div class="cursos-header">
         <label>Cursos a los que postulas</label>
         <span class="cursos-count"><strong id="cursosSeleccionados">0</strong>/7</span>
@@ -255,30 +255,30 @@
         <div class="curso-item">Cargando cursos…</div>
       </div>
       <div class="error" id="errCursos">Selecciona entre 1 y 7 cursos.</div>
-
+ 
       <button type="submit" id="submitBtn">Enviar postulación</button>
       <div class="hint" style="text-align:center;margin-top:10px;">Puedes seleccionar hasta 7 cursos. Se envía una sola postulación con todos los cursos elegidos, y un solo correo de confirmación.</div>
-
+ 
     </form>
-
+ 
     <div class="success" id="success">
       <div class="icon">✓</div>
       <h2>Postulación enviada</h2>
       <p>Te llegará un correo con el detalle a la dirección indicada.</p>
       <div class="details" id="successDetails"></div>
     </div>
-
+ 
     <div class="blocked" id="blocked">
       <div class="icon">✕</div>
       <h2>Ya tienes una postulación registrada</h2>
       <p>Este RUT ya envió una postulación. Si necesitas modificarla, contacta a la Dirección de Estudios.</p>
     </div>
-
+ 
   </div>
-
+ 
   <div class="config-note">¿Problemas con tu postulación? Escribe a la Dirección de Estudios.</div>
 </div>
-
+ 
 <script>
 /* ============================================================
    CONFIGURACIÓN — reemplazar con las URLs reales de los flows
@@ -289,12 +289,12 @@ const CONFIG = {
   GET_POSTULACION_URL: "https://prod-00.westus.logic.azure.com/REEMPLAZAR_GET_POSTULACION",
   // Flow HTTP trigger: recibe el objeto de la postulación (con array de cursos),
   // crea el/los items en SharePoint y dispara el correo de confirmación al alumno
-  POST_POSTULACION_URL: "https://prod-00.westus.logic.azure.com/REEMPLAZAR_POST_POSTULACION",
+  POST_POSTULACION_URL: "https://defaultb91e1a9b47184623882e6fb655d96b.f0.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f4f9a656f58d44d7adeb26a8c6e2df5f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=wrH7XB8LhtWLvdJt4hhlV-85lxliumn9YVIP-pjnZK4",
   // Flow HTTP trigger (o endpoint estático): devuelve la lista de cursos disponibles
   GET_CURSOS_URL: "https://prod-00.westus.logic.azure.com/REEMPLAZAR_GET_CURSOS",
   MAX_CURSOS: 7
 };
-
+ 
 // Fallback local de cursos (cargado desde PLANILLA_AYUDANTES.xlsx),
 // se usa mientras GET_CURSOS_URL no esté configurado
 const CURSOS_FALLBACK = [
@@ -380,7 +380,7 @@ const CURSOS_FALLBACK = [
   "TRADING: TEORIA Y EVIDENCIA",
   "VALORACION DE EMPRESAS Y PROY."
 ];
-
+ 
 // Carrera(s) asociada(s) a cada curso, según PLANILLA_AYUDANTES.xlsx.
 // Se muestra debajo del nombre del curso en el listado de selección.
 const CURSOS_CARRERA = {
@@ -466,7 +466,7 @@ const CURSOS_CARRERA = {
   "TRADING: TEORIA Y EVIDENCIA": "Ing. Comercial - Opt Mag",
   "VALORACION DE EMPRESAS Y PROY.": "Ing. Comercial"
 };
-
+ 
 const form = document.getElementById('form');
 const success = document.getElementById('success');
 const blocked = document.getElementById('blocked');
@@ -476,10 +476,10 @@ const cursosBox = document.getElementById('cursosBox');
 const cursoBuscar = document.getElementById('cursoBuscar');
 const cursosSeleccionadosEl = document.getElementById('cursosSeleccionados');
 const submitBtn = document.getElementById('submitBtn');
-
+ 
 let cursosDisponibles = [];
 let cursosSeleccionados = new Set();
-
+ 
 // -------- Validación de RUT chileno --------
 function limpiarRut(rut){ return rut.replace(/[^0-9kK]/g,'').toUpperCase(); }
 function formatearRut(rut){
@@ -503,7 +503,7 @@ function validarRut(rut){
   const dvEsperado = resto === 11 ? '0' : resto === 10 ? 'K' : String(resto);
   return dv === dvEsperado;
 }
-
+ 
 rutInput.addEventListener('blur', async () => {
   const raw = rutInput.value.trim();
   if(!raw) return;
@@ -516,13 +516,13 @@ rutInput.addEventListener('blur', async () => {
     await verificarRutDuplicado(limpiarRut(raw));
   }
 });
-
+ 
 correoInput.addEventListener('blur', () => {
   const valido = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(correoInput.value.trim());
   document.getElementById('errCorreo').classList.toggle('show', !valido);
   correoInput.classList.toggle('invalid', !valido);
 });
-
+ 
 // -------- Condición: Alumno / Titulado --------
 const carreraWrap = document.getElementById('carreraWrap');
 const carreraSelect = document.getElementById('carrera');
@@ -534,7 +534,7 @@ document.querySelectorAll('input[name="condicion"]').forEach(radio => {
     if(!esAlumno) carreraSelect.value = '';
   });
 });
-
+ 
 // -------- Verifica si el RUT ya tiene una postulación registrada --------
 async function verificarRutDuplicado(rutLimpio){
   try{
@@ -555,7 +555,7 @@ async function verificarRutDuplicado(rutLimpio){
     // si el flow no responde, se deja pasar y la validación final queda del lado del flow de creación
   }
 }
-
+ 
 // -------- Carga de cursos disponibles --------
 async function cargarCursos(){
   try{
@@ -568,7 +568,7 @@ async function cargarCursos(){
   }
   renderCursos();
 }
-
+ 
 function renderCursos(filtro=''){
   const lista = cursosDisponibles.filter(c => c.toLowerCase().includes(filtro.toLowerCase()));
   if(!lista.length){
@@ -588,7 +588,7 @@ function renderCursos(filtro=''){
         </span>
       </label>`;
   }).join('');
-
+ 
   cursosBox.querySelectorAll('input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', () => {
       if(cb.checked) cursosSeleccionados.add(cb.value);
@@ -599,23 +599,23 @@ function renderCursos(filtro=''){
     });
   });
 }
-
+ 
 cursoBuscar.addEventListener('input', () => renderCursos(cursoBuscar.value));
-
+ 
 // -------- Envío del formulario --------
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-
+ 
   const rutOk = validarRut(rutInput.value);
   const correoOk = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(correoInput.value.trim());
   document.getElementById('errRut').classList.toggle('show', !rutOk);
   document.getElementById('errCorreo').classList.toggle('show', !correoOk);
-
+ 
   const cursosOk = cursosSeleccionados.size >= 1 && cursosSeleccionados.size <= CONFIG.MAX_CURSOS;
   document.getElementById('errCursos').classList.toggle('show', !cursosOk);
-
+ 
   if(!rutOk || !correoOk || !cursosOk) return;
-
+ 
   const condicion = document.querySelector('input[name="condicion"]:checked').value;
   const payload = {
     nombre: document.getElementById('nombre').value.trim(),
@@ -627,10 +627,10 @@ form.addEventListener('submit', async (e) => {
     cursos: Array.from(cursosSeleccionados),
     fechaPostulacion: new Date().toISOString()
   };
-
+ 
   submitBtn.disabled = true;
   submitBtn.textContent = 'Enviando…';
-
+ 
   try{
     const res = await fetch(CONFIG.POST_POSTULACION_URL, {
       method:'POST',
@@ -645,7 +645,7 @@ form.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Enviar postulación';
   }
 });
-
+ 
 function mostrarExito(payload){
   form.classList.add('hidden');
   success.classList.add('show');
@@ -659,9 +659,9 @@ function mostrarExito(payload){
     </div>
   `;
 }
-
+ 
 cargarCursos();
 </script>
-
+ 
 </body>
 </html>
