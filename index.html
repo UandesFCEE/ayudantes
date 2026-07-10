@@ -255,7 +255,7 @@
     <div class="success" id="success">
       <div class="icon">✓</div>
       <h2>Postulación enviada</h2>
-      <p>Te llegará un correo con el detalle a la dirección indicada.</p>
+      <p>Te llegará un correo con la confirmación.</p>
       <div class="details" id="successDetails"></div>
     </div>
  
@@ -607,7 +607,7 @@ form.addEventListener('submit', async (e) => {
     if(!res.ok) throw new Error('Error al enviar');
     mostrarExito(payload);
   }catch(err){
-    alert('No se pudo enviar la postulación. Intenta nuevamente o contacta a la Dirección de Estudios.');
+    alert('No se pudo enviar la postulación. Intenta nuevamente o contacta a Paula Videla, pvidela@uandes.cl.');
     submitBtn.disabled = false;
     submitBtn.textContent = 'Enviar postulación';
   }
