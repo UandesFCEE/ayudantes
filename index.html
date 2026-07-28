@@ -1,67 +1,58 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario cerrado</title>
-    <style>
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Enviando…';
 
-        .card {
-            max-width: 600px;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,.12);
-            text-align: center;
-        }
+  try{
+    const res = await fetch(CONFIG.POST_POSTULACION_URL, {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('Error al enviar');
+    mostrarExito(payload);
+  }catch(err){
+    alert('No se pudo enviar la postulación. Intenta nuevamente o contacta a Paula Videla, pvidela@uandes.cl.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar postulación';
+  }
+});
 
-        h1 {
-            color: #003E7E;
-            margin-bottom: 20px;
-        }
+function mostrarExito(payload){
+  form.classList.add('hidden');
+  success.classList.add('show');
 
-        p {
-            color: #555;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+  const details = document.getElementById('successDetails');
+  details.innerHTML = '';
 
-        .estado {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 8px 16px;
-            background: #f8d7da;
-            color: #842029;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
+  function addRow(label, value){
+    const row = document.createElement('div');
+    row.className = 'row';
+    const spanLabel = document.createElement('span');
+    spanLabel.textContent = label;
+    const spanValue = document.createElement('span');
+    spanValue.textContent = value;
+    row.append(spanLabel, spanValue);
+    details.appendChild(row);
+  }
 
-<div class="card">
-    <div class="estado">Formulario cerrado</div>
+  addRow('Nombre', payload.nombre);
+  addRow('RUT', payload.rut);
+  addRow('Correo', payload.correo);
+  addRow('Condición', payload.condicion + (payload.carrera ? ' · ' + payload.carrera : ''));
 
-    <h1>El período de recepción de solicitudes ha finalizado</h1>
+  const cursosList = document.createElement('div');
+  cursosList.className = 'cursos-list';
+  payload.cursos.forEach(c => {
+    const div = document.createElement('div');
+    div.textContent = c;
+    cursosList.appendChild(div);
+  });
+  details.appendChild(cursosList);
+}
 
-    <p>
-        Este formulario ya no se encuentra disponible y no es posible enviar nuevas solicitudes.
-    </p>
-
-    <p>
-        Si tienes alguna consulta, por favor comunícate con Paula Videla (pvidela@uandes.cl).
-    </p>
-
-</div>
+cargarCursos();
+</script>
 
 </body>
 </html>
